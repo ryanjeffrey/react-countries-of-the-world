@@ -5,7 +5,7 @@ import CountryCard from '../../CountryCard/CountryCard';
 import './Main.css';
 
 export default function Main() {
-  const { filterCountries, continent, setContinent } = useCountries();
+  const { filterCountries, continent, setContinent, error } = useCountries();
   return (
     <>
       <select
@@ -23,6 +23,7 @@ export default function Main() {
         <option value="North America">North America</option>
         <option value="South America">South America</option>
       </select>
+      <p className="error">{error}</p>
       <main>
         {filterCountries().map((country) => (
           <CountryCard key={country.id} {...country} />

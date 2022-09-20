@@ -4,11 +4,16 @@ import { fetchCountries } from '../services/countries';
 export function useCountries() {
   const [countries, setCountries] = useState([]);
   const [continent, setContinent] = useState('all');
+  const [error, setError] = useState('');
 
   useEffect(() => {
     async function fetchData() {
-      const data = await fetchCountries();
-      setCountries(data);
+      try {
+        const data = await fetchCountries();
+        setCountries(data);
+      } catch (e) {
+        setError(e.message.toUpperCase());
+      }
     }
     fetchData();
   }, []);
@@ -18,5 +23,5 @@ export function useCountries() {
     return countries.filter((country) => country.continent === continent);
   };
 
-  return { filterCountries, continent, setContinent };
+  return { filterCountries, continent, setContinent, error };
 }

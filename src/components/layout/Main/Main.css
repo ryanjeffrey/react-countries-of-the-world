@@ -14,3 +14,8 @@ main {
     grid-template-columns: auto auto auto auto auto;
     margin: 20px;
 }
+
+.error {
+    margin-top: 5px;
+    color: red;
+}
