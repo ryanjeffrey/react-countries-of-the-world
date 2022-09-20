@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+select {
+    margin-top: 40px;
+    font-size: 1em;
+}
+
 main {
     display: grid;
     grid-template-columns: auto auto auto auto auto;

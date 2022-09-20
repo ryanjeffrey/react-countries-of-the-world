@@ -1,7 +1,12 @@
 .country-card {
-    margin: 20px;
+    margin: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .country-name {
-    margin-bottom: 10px;
+    margin-right: 10px;
+    inline-size: 100px;
+    font-weight: bold;
 }
