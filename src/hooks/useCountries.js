@@ -5,6 +5,7 @@ export function useCountries() {
   const [countries, setCountries] = useState([]);
   const [continent, setContinent] = useState('all');
   const [error, setError] = useState('');
+  const [query, setQuery] = useState('');
 
   useEffect(() => {
     async function fetchData() {
@@ -19,9 +20,13 @@ export function useCountries() {
   }, []);
 
   const filterCountries = () => {
-    if (continent === 'all') return countries;
-    return countries.filter((country) => country.continent === continent);
+    const filteredCountries = countries.filter(
+      (country) =>
+        (continent === 'all' ? true : country.continent === continent) &&
+        country.name.toLowerCase().includes(query)
+    );
+    return filteredCountries;
   };
 
-  return { filterCountries, continent, setContinent, error };
+  return { filterCountries, continent, setContinent, error, query, setQuery };
 }

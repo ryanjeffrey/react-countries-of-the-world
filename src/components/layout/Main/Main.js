@@ -5,9 +5,10 @@ import CountryCard from '../../CountryCard/CountryCard';
 import './Main.css';
 
 export default function Main() {
-  const { filterCountries, continent, setContinent, error } = useCountries();
+  const { filterCountries, continent, setContinent, error, query, setQuery } = useCountries();
   return (
     <>
+      <input type="text" placeholder="Search Countries..." value={query} onChange={(e) => setQuery(e.target.value.toLowerCase())} />
       <select
         value={continent}
         onChange={(e) => {

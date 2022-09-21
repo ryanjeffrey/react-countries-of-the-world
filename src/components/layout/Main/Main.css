@@ -7,6 +7,11 @@
     font-family: 'Space Grotesk', sans-serif;
 }
 
+input {
+    font-size: 1em;
+    margin-right: 20px;
+}
+
 select {
     margin: 20px auto;
     font-size: 1em;
