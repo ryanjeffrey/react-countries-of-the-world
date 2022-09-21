@@ -1,14 +1,20 @@
 import React from 'react';
 import { useCountries } from '../../../hooks/useCountries';
 import CountryCard from '../../CountryCard/CountryCard';
+import Loader from '../../Loader/Loader';
 
 import './Main.css';
 
 export default function Main() {
-  const { filterCountries, continent, setContinent, error, query, setQuery } = useCountries();
+  const { filterCountries, continent, setContinent, error, query, setQuery, loading } = useCountries();
   return (
     <>
-      <input type="text" placeholder="Search Countries..." value={query} onChange={(e) => setQuery(e.target.value.toLowerCase())} />
+      <input
+        type="text"
+        placeholder="Search Countries..."
+        value={query}
+        onChange={(e) => setQuery(e.target.value.toLowerCase())}
+      />
       <select
         value={continent}
         onChange={(e) => {
@@ -26,7 +32,8 @@ export default function Main() {
       </select>
       <p className="error">{error}</p>
       <main>
-        {filterCountries().map((country) => (
+        {loading && <Loader />}
+        {!loading && filterCountries().map((country) => (
           <CountryCard key={country.id} {...country} />
         ))}
       </main>

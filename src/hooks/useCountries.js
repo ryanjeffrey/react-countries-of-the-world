@@ -6,12 +6,14 @@ export function useCountries() {
   const [continent, setContinent] = useState('all');
   const [error, setError] = useState('');
   const [query, setQuery] = useState('');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
       try {
         const data = await fetchCountries();
         setCountries(data);
+        setTimeout(() => setLoading(false), 2000);
       } catch (e) {
         setError(e.message.toUpperCase());
       }
@@ -28,5 +30,5 @@ export function useCountries() {
     return filteredCountries;
   };
 
-  return { filterCountries, continent, setContinent, error, query, setQuery };
+  return { filterCountries, continent, setContinent, error, query, setQuery, loading };
 }
