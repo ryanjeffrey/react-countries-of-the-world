@@ -1,0 +1,19 @@
+.loader {
+  animation: pulse-animation 2s infinite;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-column: 3;
+  margin-top: 100px;
+  padding: 40px;
+}
+
+@keyframes pulse-animation {
+  0% {
+    box-shadow: 0 0 0 0px rgba(37, 113, 190, 0.25);
+  }
+  100% {
+    box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
+  }
+}
